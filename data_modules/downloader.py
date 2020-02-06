@@ -1,8 +1,8 @@
 import os
 import cv2
 from tqdm import tqdm
-from modules.utils import images_options
-from modules.utils import bcolors as bc
+from data_modules.utils import images_options
+from data_modules.utils import bcolors as bc
 from multiprocessing.dummy import Pool as ThreadPool
 
 def download(args, df_val, folder, dataset_dir, class_name, class_code, class_list=None, threads = 20):
