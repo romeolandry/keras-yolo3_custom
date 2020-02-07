@@ -1,5 +1,5 @@
 import argparse
-
+from configuration import download_data as data_config
 def parser_arguments():
     '''
     Manage the input from the terminal.
@@ -7,9 +7,10 @@ def parser_arguments():
     '''
     parser = argparse.ArgumentParser(description='Open Image Dataset Downloader')
 
-    parser.add_argument("command",
+    parser.add_argument("--command",
                         metavar="<command> 'downloader', 'visualizer' or 'ill_downloader'.",
-                        help="'downloader', 'visualizer' or 'ill_downloader'.")
+                        help="'downloader', 'visualizer' or 'ill_downloader'.",
+                        default=data_config.option)
     parser.add_argument('--Dataset', required=False,
                         metavar="/path/to/OID/csv/",
                         help='Directory of the OID dataset folder')
@@ -18,10 +19,12 @@ def parser_arguments():
                         help='ans Yes to possible download of missing files')
     parser.add_argument('--classes', required=False, nargs='+',
                         metavar="list of classes",
-                        help="Sequence of 'strings' of the wanted classes")
+                        help="Sequence of 'strings' of the wanted classes",
+                        default=data_config.classe)
     parser.add_argument('--type_csv', required=False, choices=['train', 'test', 'validation', 'all'],
                         metavar="'train' or 'validation' or 'test' or 'all'",
-                        help='From what csv search the images')
+                        help='From what csv search the images',
+                        default=data_config.type_of_Data)
 
     parser.add_argument('--sub', required=False, choices=['h', 'm'],
                         metavar="Subset of human verified images or machine generated (h or m)",
@@ -53,7 +56,7 @@ def parser_arguments():
     parser.add_argument('--noLabels', required=False, action='store_true',
                        help='No labels creations')
 
-    parser.add_argument('--limit', required=False, type=int, default=None,
+    parser.add_argument('--limit', required=False, type=int, default=data_config.Quantty,
                         metavar="integer number",
                         help='Optional limit on number of images to download')
 
