@@ -40,3 +40,5 @@ dist
 
 # Directory for jupyter file
 /jupyter_file
+# Directory for Models
+/Models
