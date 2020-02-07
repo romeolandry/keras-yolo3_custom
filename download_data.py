@@ -18,6 +18,7 @@ from modules.image_level import *
 from configuration import download_data as data_config
 from modules.utils import bcolors as bc
 
+import oid_to_pascal_voc_xml as oxml
 
 DEFAULT_OID_DIR = os.path.join(os.getcwd(), 'Data/'+data_config.Name_dataset+'/OID')
 
@@ -33,12 +34,10 @@ if __name__ == '__main__':
         print(bc.INFO + ' Answer (y)yes if you won to train with the downloaded dataset (n)no to Exit '+ bc.ENDC)
         answer = input(bc.OKGREEN + 'Continue:' + bc.ENDC)
         if (answer.lower()== "yes" or answer.lower() == "y"):
-            print("Comtinue..")
-            args = parser_arguments()
-            if args.command == 'downloader_ill':
-                image_level(args, DEFAULT_OID_DIR)
-            else:
-                bounding_boxes_images(args, DEFAULT_OID_DIR)
+            # Convert downloaded data into pascal oc data compatibale xml-file
+            oxml.oid_to_pascal_voc_xml(DEFAULT_OID_DIR)
+            import voc_to_YOLOv3
+            
     else:
         print(bc.INFO + 'A Directory with the name _{}_ will be create in to a directory named Data in you project'.format(data_config.Name_dataset) + bc.ENDC)
         args = parser_arguments()
