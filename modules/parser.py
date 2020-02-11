@@ -61,17 +61,31 @@ def parser_arguments():
                         help='Optional limit on number of images to download')
     # Argument for Converter
     parser = argparse.ArgumentParser(description='Darknet To Keras Converter.')
-    parser.add_argument('config_path', default='', help='Path to Darknet cfg file.')
-    parser.add_argument('weights_path', default='', help='Path to Darknet weights file.')
-    parser.add_argument('output_path', default='', help='Path to output Keras model file.')
+    parser.add_argument(
+        '--config_path',
+        required=False,
+        default=data_config.config_path,
+        help='Path to Darknet cfg file.')
+    parser.add_argument(
+        '--weights_path',
+        required=False,
+        default=data_config.weights_path_model_to_convert,
+        help='Path to Darknet weights file.')
+    parser.add_argument(
+        '--output_path',
+        required=False,
+        default=data_config.output_path_converted_darknet_to_keras,
+        help='Path to output Keras model file.')
     parser.add_argument(
         '-p',
         '--plot_model',
+        required=False,
         help='Plot generated Keras model and save as image.',
         action='store_true')
     parser.add_argument(
         '-w',
         '--weights_only',
+        required=False,
         help='Save as Keras weights file instead of model file.',
         action='store_true')
 

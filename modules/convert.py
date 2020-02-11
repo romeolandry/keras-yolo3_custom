@@ -37,8 +37,7 @@ def unique_config_sections(config_file):
     output_stream.seek(0)
     return output_stream
 
-def run_convertor():
-    args = parser_arguments()
+def run_convertor(args):
     config_path = os.path.expanduser(args.config_path)
     weights_path = os.path.expanduser(args.weights_path)
     assert config_path.endswith('.cfg'), '{} is not a .cfg file'.format(

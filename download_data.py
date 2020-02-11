@@ -13,7 +13,7 @@ from modules.show import *
 from modules.csv_downloader import *
 from modules.bounding_boxes import *
 from modules.image_level import *
-from configuration import download_data as data_config
+from configuration import configuration as data_config
 from modules.utils import bcolors as bc
 from modules import oid_to_pascal_voc_xml as oxml
 from modules import convert
@@ -32,12 +32,21 @@ def do_conversion_file (oid_directory):
     # reset the current directry as default directory
     os.chdir(os.getcwd())
 
+def do_convert_darknet_to_keras()
+    # check configuration else alert
+    print(bc.HEADER + 'Convert Darknet to keras'+ bc.ENDC)
+    print(bc.INFO + 'Check weights file '+ bc.ENDC)
+    # check if weight else download from repository
+    print(bc.INFO + 'run Convertor'+ bc.ENDC)
+    # run convertor
+    pass
+
 
 if __name__ == '__main__':
-
     
     print("Default dir is {}".format(DEFAULT_OID_DIR))
-
+    # get user given arguments
+    args = parser_arguments()
     if path.isdir(DEFAULT_OID_DIR):
         print (bc.WARNING + 'A Directory with the name {} alredy exits'.format(data_config.Name_dataset) + bc.ENDC )
         print(bc.INFO + 'Maybe the  data you wont already be downloaded' + bc.ENDC)
@@ -50,7 +59,6 @@ if __name__ == '__main__':
             do_train = True
     else:
         print(bc.INFO + 'A Directory with the name _{}_ will be create in to a directory named Data in you project'.format(data_config.Name_dataset) + bc.ENDC)
-        args = parser_arguments()
         if args.command == 'downloader_ill':
             image_level(args, DEFAULT_OID_DIR)
             do_conversion_file(DEFAULT_OID_DIR)
@@ -61,7 +69,7 @@ if __name__ == '__main__':
             do_train = True
 
     # Convert the Model config file to keras
-    convert.run_convertor
+    convert.run_convertor(args)
 
 
     if do_train:
