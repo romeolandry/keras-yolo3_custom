@@ -43,4 +43,4 @@ dist
 # Directory for Models
 /Models
 # weights
-.weights
+/weights/*.weights
