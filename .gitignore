@@ -16,10 +16,7 @@ __pycache__
 dependencies/
 target/
 *.coverage
-*.user
-*.code-workspace
-/build
-temp/
+*.user/weights/
 assets/
 
 # setup.py intermediates
@@ -42,5 +39,13 @@ dist
 /jupyter_file
 # Directory for Models
 /Models
-# weights
-/weights/*.weights
+# Models 
+*.weights
+*.h5
+# images
+*.jpg
+*.pdf
+*.png
+
+# log
+logs/
