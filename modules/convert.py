@@ -1,40 +1,23 @@
 #! /usr/bin/env python
 """
-Reads Darknet config and weights and creates Keras model with TF backend.
-
+The application to convert convert Darknet model to keras as writted by qqwweee
+[https://github.com/qqwweee/keras-yolo3]
 """
-
-import argparse
-import configparser
 import io
 import os
+import configparser
+from modules.parser import *
 from collections import defaultdict
 
 import numpy as np
-from keras import backend as K
-from keras.layers import (Conv2D, Input, ZeroPadding2D, Add,
+from tensorflow.python.keras import backend as K
+from tensorflow.python.keras.layers import (Conv2D, Input, ZeroPadding2D, Add,
                           UpSampling2D, MaxPooling2D, Concatenate)
-from keras.layers.advanced_activations import LeakyReLU
-from keras.layers.normalization import BatchNormalization
-from keras.models import Model
-from keras.regularizers import l2
-from keras.utils.vis_utils import plot_model as plot
-
-
-parser = argparse.ArgumentParser(description='Darknet To Keras Converter.')
-parser.add_argument('config_path', help='Path to Darknet cfg file.')
-parser.add_argument('weights_path', help='Path to Darknet weights file.')
-parser.add_argument('output_path', help='Path to output Keras model file.')
-parser.add_argument(
-    '-p',
-    '--plot_model',
-    help='Plot generated Keras model and save as image.',
-    action='store_true')
-parser.add_argument(
-    '-w',
-    '--weights_only',
-    help='Save as Keras weights file instead of model file.',
-    action='store_true')
+from tensorflow.python.keras.layers.advanced_activations import LeakyReLU
+from tensorflow.python.keras.layers.normalization import BatchNormalization
+from tensorflow.python.keras.models import Model
+from tensorflow.python.keras.regularizers import l2
+from tensorflow.python.keras.utils.vis_utils import plot_model as plot
 
 def unique_config_sections(config_file):
     """Convert all config sections to have unique names.
@@ -54,8 +37,8 @@ def unique_config_sections(config_file):
     output_stream.seek(0)
     return output_stream
 
-# %%
-def _main(args):
+def run_convertor():
+    args = parser_arguments()
     config_path = os.path.expanduser(args.config_path)
     weights_path = os.path.expanduser(args.weights_path)
     assert config_path.endswith('.cfg'), '{} is not a .cfg file'.format(
@@ -256,7 +239,3 @@ def _main(args):
     if args.plot_model:
         plot(model, to_file='{}.png'.format(output_root), show_shapes=True)
         print('Saved model plot to {}.png'.format(output_root))
-
-
-if __name__ == '__main__':
-    _main(parser.parse_args())
