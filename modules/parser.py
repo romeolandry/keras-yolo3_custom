@@ -1,5 +1,5 @@
 import argparse
-from configuration import download_data as data_config
+from configuration import configuration as data_config
 def parser_arguments():
     '''
     Manage the input from the terminal.

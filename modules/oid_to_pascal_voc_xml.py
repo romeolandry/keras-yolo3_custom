@@ -1,9 +1,6 @@
 import os
 from tqdm import tqdm
-from sys import exit
-import argparse
 import cv2
-from textwrap import dedent
 from lxml import etree
 
 XML_DIR = ''
