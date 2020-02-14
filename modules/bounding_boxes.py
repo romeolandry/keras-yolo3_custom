@@ -3,6 +3,7 @@ from modules.utils import *
 from modules.downloader import *
 from modules.show import *
 from modules.csv_downloader import *
+from textwrap import dedent
 
 from modules.utils import bcolors as bc
 

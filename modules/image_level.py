@@ -20,6 +20,7 @@ def image_level(args, DEFAULT_OID_DIR):
 
 	if args.sub is None:
 			print(bc.FAIL + 'Missing subset argument.' + bc.ENDC)
+			print(bc.FAIL + 'Missing subset argument.' + bc.ENDC)
 			exit(1)
 
 	if args.sub == 'h':

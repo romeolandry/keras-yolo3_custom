@@ -1,5 +1,6 @@
 import os
 
+
 def images_options(df_val, args):
     '''
     Manage the options for the images downloader.
@@ -29,6 +30,7 @@ def images_options(df_val, args):
         df_val = df_val[~df_val.ImageID.isin(rejectedID)]
 
     return df_val
+
 
 def mkdirs(Dataset_folder, csv_folder, classes, type_csv):
     '''
@@ -71,6 +73,7 @@ def mkdirs(Dataset_folder, csv_folder, classes, type_csv):
     if not os.path.exists(csv_folder):
         os.makedirs(csv_folder)
 
+
 def progression_bar(total_images, index):
     '''
     Print the progression bar for the download of the images.
@@ -106,6 +109,7 @@ def progression_bar(total_images, index):
     bar = "[{}{}] {}/{}".format('-' * index, ' ' * (toolbar_width - index), image_index, total_images)
     print(bar.rjust(int(columns)), end='\r')
 
+
 def show_classes(classes):
     '''imag
     Show the downloaded classes in the selected folder during visualization mode
@@ -113,6 +117,7 @@ def show_classes(classes):
     for n in classes:
         print("- {}".format(n))
     print("\n")
+
 
 def logo(command):
     '''
@@ -163,6 +168,7 @@ def logo(command):
                                             
             
         ''' + bc.ENDC)
+
 
 class bcolors:
     HEADER = '\033[95m'

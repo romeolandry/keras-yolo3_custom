@@ -1,16 +1,24 @@
 import argparse
 from configuration import configuration as data_config
+
+
 def parser_arguments():
     '''
     Manage the input from the terminal.
     :return: parser
     '''
-    parser = argparse.ArgumentParser(description='Open Image Dataset Downloader')
+    
+    parser = argparse.ArgumentParser(description='Run Option')
 
+    parser.add_argument("option",
+                        metavar="<option> 'train', 'test', 'downloader', 'export'.",
+                        help="'train', 'test', 'downloader', 'export'.")
+    
+    # Options for downloader 
     parser.add_argument("--command",
                         metavar="<command> 'downloader', 'visualizer' or 'ill_downloader'.",
                         help="'downloader', 'visualizer' or 'ill_downloader'.",
-                        default=data_config.option)
+                        default=data_config.command)
     parser.add_argument('--Dataset', required=False,
                         metavar="/path/to/OID/csv/",
                         help='Directory of the OID dataset folder')
@@ -47,20 +55,19 @@ def parser_arguments():
                         help='Optional characteristic of the images. Indicates a picture taken from the inside of the object.')
 
     parser.add_argument('--multiclasses', required=False, default='0', choices=['0', '1'],
-                       metavar="0 (default) or 1",
-                       help='Download different classes separately (0) or together (1)')
+                        metavar="0 (default) or 1",
+                        help='Download different classes separately (0) or together (1)')
 
     parser.add_argument('--n_threads', required=False, metavar="[default 20]",
-                       help='Num of the threads to use')
+                        help='Num of the threads to use')
 
     parser.add_argument('--noLabels', required=False, action='store_true',
-                       help='No labels creations')
+                        help='No labels creations')
 
     parser.add_argument('--limit', required=False, type=int, default=data_config.Quantty,
                         metavar="integer number",
                         help='Optional limit on number of images to download')
-    # Argument for Converter
-    parser = argparse.ArgumentParser(description='Darknet To Keras Converter.')
+
     parser.add_argument(
         '--config_path',
         required=False,
