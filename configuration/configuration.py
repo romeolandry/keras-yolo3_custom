@@ -11,9 +11,11 @@ class_file_classes= class_name +'_classes.txt'
 
 """
     Confguration to convert Darknet To Keras to keras model
+    /home/kamgo/Donnees/Master_projekt/keras-yolo3_custom/Weights/yolov3.weights
 """
-config_path = os.path.join(currdir, './models/yolov3.cfg') # Path to Darknet cfg file.
-weights_path_model_to_convert = os.path.join(currdir, '../weights/')  #Path to Darknet weights file
-output_path_converted_darknet_to_keras = os.path.join(currdir, '../Models/Models_O/')  # Path to output Keras model file
+weight_url = "https://pjreddie.com/media/files/yolov3.weights" # link for default weight to use
+config_path = os.path.join(currdir, './configuration/models/yolov3.cfg') # Path to Darknet cfg file.
+weights_path_model_to_convert = os.path.join(currdir, './Weights/yolov3.weights')  #Path to Darknet weights file
+output_path_converted_darknet_to_keras = os.path.join(currdir, './Models/Models_O/yolov3_mO.h5')  # Path to output Keras model file
 #weights_only = True # save converted model as Keras weights file only or  instead of model file false.
 store_true = True # Plot generated Keras model and save as image False if not .

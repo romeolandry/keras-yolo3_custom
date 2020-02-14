@@ -33,17 +33,6 @@ def do_conversion_file(oid_directory):
     # reset the current directry as default directory
     os.chdir(os.getcwd())
 
-
-def download_default_weight_keras():
-    # check configuration else alert
-    print(bc.HEADER + 'Convert Darknet to keras'+ bc.ENDC)
-    print(bc.INFO + 'Check weights file '+ bc.ENDC)
-    # check if weight else download from repository
-    # e.g https://stackoverflow.com/questions/37573483/progress-bar-while-download-file-over-http-with-requests
-    print(bc.INFO + 'run Convertor'+ bc.ENDC)
-    # run convertor
-    pass
-
 def downloader(args):
     load = False
     if path.isdir(DEFAULT_OID_DIR):

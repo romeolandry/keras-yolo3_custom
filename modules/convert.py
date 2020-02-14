@@ -6,7 +6,11 @@ The application to convert convert Darknet model to keras as writted by qqwweee
 import io
 import os
 import configparser
+import requests
 from modules.parser import *
+from modules.utils import bcolors as bc
+from tqdm import tqdm
+from configuration import configuration as data_config
 from collections import defaultdict
 
 import numpy as np
@@ -18,6 +22,23 @@ from tensorflow.python.keras.layers.normalization import BatchNormalization
 from tensorflow.python.keras.models import Model
 from tensorflow.python.keras.regularizers import l2
 from tensorflow.python.keras.utils.vis_utils import plot_model as plot
+
+def download_default_weight_keras(path_to_weight):
+
+    url = data_config.weight_url
+    # Streaming, so we can iterate over the response.
+    r = requests.get(url, stream=True)
+    # Total size in bytes.
+    total_size = int(r.headers.get('content-length', 0))
+    block_size = 1024 #1 Kibibyte
+    t=tqdm(total=total_size, unit='iB', unit_scale=True)
+    with open(data_config.weights_path_model_to_convert, 'wb') as f:
+        for data in r.iter_content(block_size):
+            t.update(len(data))
+            f.write(data)
+    t.close()
+    if total_size != 0 and t.n != total_size:
+        print(bc.FAIL + "ERROR, something went wrong" + bc.ENDC)
 
 def unique_config_sections(config_file):
     """Convert all config sections to have unique names.
@@ -48,10 +69,15 @@ def run_convertor(args):
     output_path = os.path.expanduser(args.output_path)
     assert output_path.endswith(
         '.h5'), 'output path {} is not a .h5 file'.format(output_path)
-    output_root = os.path.splitext(output_path)[0]
 
+    print(bc.INFO + 'Check weights file '+ bc.ENDC)
+    # check if weight file exits if not auto matische donwload
+    if(not os.path.exists(weights_path)):
+        print(bc.FAIL + 'no weigth given. '+ bc.ENDC)
+        print(bc.INFO + 'The deflaut weight will be downloaded' + bc.ENDC)
+        download_default_weight_keras(weights_path)
     # Load weights and config.
-    print('Loading weights.')
+    print(bc.INFO + 'Loading weights. '+ bc.ENDC)
     weights_file = open(weights_path, 'rb')
     major, minor, revision = np.ndarray(
         shape=(3, ), dtype='int32', buffer=weights_file.read(12))

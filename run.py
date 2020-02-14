@@ -4,14 +4,16 @@
 import os
 from os import path
 import modules.parser as pars
+import download_data as dd
+import modules.convert as conv_to_keras
 
 if __name__ == "__main__":
     args = pars.parser_arguments()
     
     if args.option == 'train':
         print("train option was choosed")
+        conv_to_keras.run_convertor(args)
     if args.option == 'downloader':
-        import download_data as d
-        d.downloader(args)
+        dd.downloader(args)
     if args.option == 'export':
         print("export model to ONNX")
