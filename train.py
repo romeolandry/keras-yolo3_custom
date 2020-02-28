@@ -83,6 +83,12 @@ def train():
             callbacks=[logging, checkpoint, reduce_lr, early_stopping])
         model.save_weights(data_config.log_dir + 'trained_weights_final.h5')
         ## Save the entire model to be converted in onnx-file
+        if not os.path.exists(os.path.dirname(data_config.trained_model)):
+            try:
+                os.makedirs(os.path.dirname(data_config.trained_model))
+            except OSError as exc:
+                if exc.errno != errno.EEXIST:
+                    raise
         model.save(data_config.trained_model)
 
     # Further training if needed.
