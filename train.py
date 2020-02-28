@@ -5,8 +5,16 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 warnings.simplefilter(action='ignore', category=UserWarning)
 
+
+import os
 import numpy as np
 import keras.backend as K
+import tensorflow as tf
+
+# ignore deprecated warning of tensorflow
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
+
 from keras.layers import Input, Lambda
 from keras.models import Model
 from keras.optimizers import Adam
