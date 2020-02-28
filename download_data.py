@@ -7,7 +7,7 @@ for the custom model we will use data from Dataset V5
 
 import os
 from os import path
-import modules.parser as pars
+import modules.parser
 import modules.utils
 import modules.downloader
 import modules.show

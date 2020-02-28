@@ -97,4 +97,58 @@ def parser_arguments():
         help='Save as Keras weights file instead of model file.',
         action='store_true')
 
+    # Option for test model
+    parser.add_argument('--convert', required=False, action='store_true',
+                        #metavar="Yes to download missing files",
+                        help='ans Yes to test from given weigth: the model config will be convert to keras model')
+
+    parser.add_argument(
+        '--anchors', type=str,
+        help='path to anchor definitions, default '
+    )
+
+    parser.add_argument(
+        '--classes_list', type=str,
+        help='path to class definitions, default '
+    )
+
+    parser.add_argument(
+        '--gpu_num',
+        type=int,
+        default= data_config.gpu_num,
+        help='Number of GPU to use, default ')
+    parser.add_argument(
+        '--score',
+        type=float,
+        default= data_config.score,
+        help='Number of GPU to use, default ')
+    
+    parser.add_argument(
+        '--iou',
+        type=float,
+        default= data_config.iou,
+        help='Number of GPU to use, default ')
+    
+    parser.add_argument(
+        '--image_size',
+        type=tuple,
+        default= data_config.score,
+        help='Number of GPU to use, default ')
+
+    parser.add_argument(
+        '--image', default=False, action="store_true",
+        help='Image detection mode, will ignore all positional arguments'
+    )
+    '''
+    Command line positional arguments -- for video detection mode
+    '''
+    parser.add_argument(
+        "--input", nargs='?', type=str,required=False,default='./path2your_video',
+        help = "Video input path"
+    )
+
+    parser.add_argument(
+        "--output", nargs='?', type=str, default="",
+        help = "[Optional] Video output path"
+    )
     return parser.parse_args()

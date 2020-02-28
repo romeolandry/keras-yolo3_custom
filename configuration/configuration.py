@@ -26,7 +26,28 @@ store_true = True # Plot generated Keras model and save as image False if not .
     Confguration to to Train Model
 """
 annotation_path = os.path.join(os.getcwd(), 'Data/' + Name_dataset + '/OID/Dataset/' + annotation_file)
-classes_file_path = os.path.join(os.getcwd(), 'Data/' + Name_dataset + '/OID/Dataset/' + class_file_classes)
+# Use coco classes if you test the downloaded modle insteat of you custon model
+classes_file_path = os.path.join(os.getcwd(), 'configuration/models/coco_classes.txt')
+# classes_file_path = os.path.join(os.getcwd(), 'Data/' + Name_dataset + '/OID/Dataset/' + class_file_classes)
 anchors_path = os.path.join(os.getcwd(), 'configuration/models/yolo_anchors.txt') 
 log_dir = os.path.join(os.getcwd(), 'log/' + Name_dataset + '/000/') 
-trained_model = os.path.join(os.getcwd(), 'Models/Models_OT/'+ Name_dataset + '/custom_model_OT.h5') 
+trained_model = os.path.join(os.getcwd(), 'Models/Models_OT/'+ Name_dataset + '/custom_model_OT.h5')
+
+"""
+    configuration for test 
+        "model_path": output of convert 
+        "anchors_path": the same that were used to train
+        "classes_path": the same that were used to train
+        "score" : 0.3,
+        "iou" : 0.45,
+        "model_image_size" : (416, 416),
+        "gpu_num" : 1,
+"""
+
+score = 0.3
+iou = 0.45
+model_imga_size  =  (416, 416)
+gpu_num = 1
+
+
+
