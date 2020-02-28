@@ -3,6 +3,7 @@ Retrain the YOLO model for your own dataset.
 """
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=UserWarning)
 
 import numpy as np
 import keras.backend as K
