@@ -1,11 +1,13 @@
-pandas
+h5py
+Keras==2.1.5
+matplotlib
 numpy
-awscli
-
-urllib3
-
-tqdm
-
 opencv-python
-
+pandas
+Pillow
+tensorflow == 1.14.0
+urllib3
+awscli
+tqdm
 lxml
+requests
