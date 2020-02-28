@@ -31,6 +31,12 @@ def download_default_weight_keras(path_to_weight):
     # Total size in bytes.
     total_size = int(r.headers.get('content-length', 0))
     block_size = 1024 #1 Kibibyte
+    if not os.path.exists(os.path.dirname(data_config.weights_path_model_to_convert)):
+        try:
+            os.makedirs(os.path.dirname(data_config.weights_path_model_to_convert))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise
     t=tqdm(total=total_size, unit='iB', unit_scale=True)
     with open(data_config.weights_path_model_to_convert, 'wb') as f:
         for data in r.iter_content(block_size):
