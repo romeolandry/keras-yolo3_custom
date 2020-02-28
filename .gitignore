@@ -46,6 +46,8 @@ dist
 *.jpg
 *.pdf
 *.png
+*.mp4
+*.avi
 # text
 *.txt
 
