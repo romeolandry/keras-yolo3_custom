@@ -46,7 +46,7 @@ dist
 *.jpg
 *.pdf
 *.png
-# text File
+# text
 *.txt
 
 # log
