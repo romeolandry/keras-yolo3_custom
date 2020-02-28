@@ -11,8 +11,8 @@ def parser_arguments():
     parser = argparse.ArgumentParser(description='Run Option')
 
     parser.add_argument("option",
-                        metavar="<option> 'train', 'test', 'downloader', 'export'.",
-                        help="'train', 'test', 'downloader', 'export'.")
+                        metavar="<option> 'train', 'test', 'downloader'.",
+                        help="'train', 'test', 'downloader'.")
     
     # Options for downloader 
     parser.add_argument("--command",
@@ -64,7 +64,7 @@ def parser_arguments():
     parser.add_argument('--noLabels', required=False, action='store_true',
                         help='No labels creations')
 
-    parser.add_argument('--limit', required=True, type=int, default=data_config.Quantty,
+    parser.add_argument('--limit', required=False, type=int, default=data_config.Quantty,
                         metavar="integer number",
                         help='Optional limit on number of images to download')
     
