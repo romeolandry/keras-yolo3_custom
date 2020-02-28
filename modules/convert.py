@@ -254,11 +254,11 @@ def run_convertor(args):
     print(model.summary())
 
     if not os.path.exists(os.path.dirname(output_path)):
-    try:
-        os.makedirs(os.path.dirname(output_path))
-    except OSError as exc:
-        if exc.errno != errno.EEXIST:
-            raise
+        try:
+            os.makedirs(os.path.dirname(output_path))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise
 
     if args.weights_only:
         model.save_weights('{}'.format(output_path))
