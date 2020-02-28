@@ -67,6 +67,7 @@ def parser_arguments():
     parser.add_argument('--limit', required=False, type=int, default=data_config.Quantty,
                         metavar="integer number",
                         help='Optional limit on number of images to download')
+    
     # Argument for convertion of the Darknet to keras
     parser.add_argument(
         '--config_path',
@@ -81,7 +82,7 @@ def parser_arguments():
     parser.add_argument(
         '--output_path',
         required=False,
-        default=data_config.output_path_converted_darknet_to_keras,
+        default=data_config.weight_model_yolov3,
         help='Path to output Keras model file.')
     parser.add_argument(
         '-p',
