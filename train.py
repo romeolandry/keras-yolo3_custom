@@ -2,13 +2,6 @@
 Retrain the YOLO model for your own dataset.
 """
 
-""" import numpy as np
-from tensorflow.keras import backend as K
-from keras.layers import Input, Lambda
-from keras.models import Model
-from keras.optimizers import Adam
-from keras.callbacks import TensorBoard, ModelCheckpoint, ReduceLROnPlateau, EarlyStopping """
-
 import numpy as np
 import keras.backend as K
 from keras.layers import Input, Lambda
@@ -31,10 +24,10 @@ def train():
     is_tiny_version = len(anchors)==6 # default setting
     if is_tiny_version:
         model = create_tiny_model(input_shape, anchors, num_classes,
-            freeze_body=2, weights_path=data_config.weight_model_tiny_yolov3)
+            freeze_body=2, weights_path=data_config.output_path_converted_darknet_to_keras)
     else:
         model = create_model(input_shape, anchors, num_classes,
-            freeze_body=2, weights_path=data_config.weight_model_yolov3) # make sure you know what you freeze
+            freeze_body=2, weights_path=data_config.output_path_converted_darknet_to_keras) # make sure you know what you freeze
 
     logging = TensorBoard(log_dir=data_config.log_dir)
     checkpoint = ModelCheckpoint(data_config.log_dir + 'ep{epoch:03d}-loss{loss:.3f}-val_loss{val_loss:.3f}.h5',
@@ -67,7 +60,7 @@ def train():
                 epochs=50,
                 initial_epoch=0,
                 callbacks=[logging, checkpoint])
-        model.save_weights(log_dir + 'trained_weights_stage_1.h5')
+        model.save_weights(data_config.log_dir + 'trained_weights_stage_1.h5')
 
     # Unfreeze and continue training, to fine-tune.
     # Train longer if the result is not good.
@@ -87,6 +80,8 @@ def train():
             initial_epoch=50,
             callbacks=[logging, checkpoint, reduce_lr, early_stopping])
         model.save_weights(data_config.log_dir + 'trained_weights_final.h5')
+        ## Save the entire model to be converted in onnx-file
+        model.save(data_config.trained_model)
 
     # Further training if needed.
 
