@@ -14,14 +14,14 @@ from configuration import configuration as data_config
 from collections import defaultdict
 
 import numpy as np
-from tensorflow.python.keras import backend as K
-from tensorflow.python.keras.layers import (Conv2D, Input, ZeroPadding2D, Add,
+from keras import backend as K
+from keras.layers import (Conv2D, Input, ZeroPadding2D, Add,
                           UpSampling2D, MaxPooling2D, Concatenate)
-from tensorflow.python.keras.layers.advanced_activations import LeakyReLU
-from tensorflow.python.keras.layers.normalization import BatchNormalization
-from tensorflow.python.keras.models import Model
-from tensorflow.python.keras.regularizers import l2
-from tensorflow.python.keras.utils.vis_utils import plot_model as plot
+from keras.layers.advanced_activations import LeakyReLU
+from keras.layers.normalization import BatchNormalization
+from keras.models import Model
+from keras.regularizers import l2
+from keras.utils.vis_utils import plot_model as plot
 
 def download_default_weight_keras(path_to_weight):
 

@@ -5,7 +5,7 @@ from configuration import configuration as data_config
 
 dataset_train = os.getcwd()+'/train/'
 
-dataset_file = data_config.class_name
+dataset_file = data_config.annotation_file
 classes_file = dataset_file[:-4]+'_classes.txt'
 
 
