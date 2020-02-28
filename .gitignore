@@ -55,3 +55,7 @@ dist
 /log
 # weight
 /Weights
+
+# Except 
+!configuration/models/*
+
