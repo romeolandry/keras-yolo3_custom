@@ -1,6 +1,9 @@
 """
     The run file schould render the needed commando 
 """
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import os
 from os import path
 import modules.parser as pars

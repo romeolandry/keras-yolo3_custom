@@ -1,3 +1,6 @@
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import xml.etree.ElementTree as ET
 from os import getcwd
 import os

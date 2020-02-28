@@ -5,6 +5,9 @@ for the custom model we will use data from Dataset V5
 # Convert the downlowded data into Xml File
 # Convert in to Yolo3 readable file
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import os
 from os import path
 import modules.parser

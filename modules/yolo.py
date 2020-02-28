@@ -2,6 +2,8 @@
 """
 Class definition of YOLO_v3 style detection model on image and video
 """
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 import colorsys
 import os
