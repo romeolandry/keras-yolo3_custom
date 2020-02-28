@@ -15,6 +15,13 @@ from collections import defaultdict
 
 import numpy as np
 from keras import backend as K
+import tensorflow as tf
+
+# ignore  warning of tensorflow about  not support FMA CPU
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+# ignore deprecated warning of tensorflow
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
 from keras.layers import (Conv2D, Input, ZeroPadding2D, Add,
                           UpSampling2D, MaxPooling2D, Concatenate)
 from keras.layers.advanced_activations import LeakyReLU
@@ -252,7 +259,7 @@ def run_convertor(args):
     if len(out_index)==0: out_index.append(len(all_layers)-1)
     model = Model(inputs=input_layer, outputs=[all_layers[i] for i in out_index])
     print(model.summary())
-    
+
     if args.weights_only:
         model.save_weights('{}'.format(output_path))
         print('Saved Keras weights to {}'.format(output_path))

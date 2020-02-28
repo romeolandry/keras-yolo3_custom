@@ -11,6 +11,8 @@ import numpy as np
 import keras.backend as K
 import tensorflow as tf
 
+# ignore  warning of tensorflow about  not support FMA CPU
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 # ignore deprecated warning of tensorflow
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
