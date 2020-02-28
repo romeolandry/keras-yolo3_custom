@@ -12,6 +12,6 @@
 
 launch train option  with --convert parameter to create the kers model throught yolo configuration
 
-    python run.py train --convert
+    python run.py train --convert --weights_path [path to file ] --output_path [path to save keras model] 
 
 
