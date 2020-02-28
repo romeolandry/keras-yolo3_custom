@@ -15,7 +15,7 @@ if __name__ == "__main__":
         print("train option was choosed")
         conv_to_keras.run_convertor(args)
         tr.train()
-    if args.option == 'downloader':
+    if args.option == 'download':
         dd.downloader(args)
     if args.option == 'export':
         print("export model to ONNX")

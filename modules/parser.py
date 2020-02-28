@@ -11,8 +11,8 @@ def parser_arguments():
     parser = argparse.ArgumentParser(description='Run Option')
 
     parser.add_argument("option",
-                        metavar="<option> 'train', 'test', 'downloader'.",
-                        help="'train', 'test', 'downloader'.")
+                        metavar="<option> 'train', 'test', 'download'.",
+                        help="'train', 'test', 'download'.")
     
     # Options for downloader 
     parser.add_argument("--command",
@@ -82,7 +82,7 @@ def parser_arguments():
     parser.add_argument(
         '--output_path',
         required=False,
-        default=data_config.weight_model_yolov3,
+        default=data_config.output_path_converted_darknet_to_keras,
         help='Path to output Keras model file.')
     parser.add_argument(
         '-p',

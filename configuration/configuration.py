@@ -1,7 +1,10 @@
 import os
 currdir = os.getcwd()
+
 # Default Download Variriable 
-option = "downloader" # witch Option will be running in OIDv4 tool
+option = "downloader" # witch Option will be runnig  with trun command ['test','train']
+command = "downloader" # witch Option will be running in OIDv4 tool 'downloader', 'visualizer' or 'downloader_ill'
+Name_dataset = "Custom_data" # Name of your folder Dataset e.g Custom_data_[calsse_names]
 Name_dataset = "Custom_data" # Name of your folder Dataset
 classe = ['Canoe'] # Witch Classes will be Downloaded to see availabel classe ['Apple','Orange']
 type_of_Data = 'train' # witch dataset did you wont to Downloaded e.g:['train', 'test', 'validation', 'all']
