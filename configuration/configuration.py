@@ -18,7 +18,7 @@ class_file_classes= annotation_file[:-4]+'_classes.txt'
 weight_url = "https://pjreddie.com/media/files/yolov3.weights" # url for default weight to use is weight wasn't given
 config_path = os.path.join(os.getcwd(), 'configuration/models/yolov3.cfg') # Path to Darknet cfg file.
 weights_path_model_to_convert = os.path.join(currdir, 'Weights/yolov3.weights')  #Path to Darknet weights file
-output_path_converted_darknet_to_keras = os.path.join(currdir, 'Models/Models_O/yolov3_mO.h5')  # Path to output Keras model file
+output_path_converted_darknet_to_keras = os.path.join(currdir, 'Models/Models_O/yolov3_mO.h5')  # Path to output Keras model file. it will be give as input model for train and test 
 #weights_only = True # save converted model as Keras weights file only or  instead of model file false.
 store_true = True # Plot generated Keras model and save as image False if not .
 
