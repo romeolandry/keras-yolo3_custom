@@ -36,7 +36,7 @@ dist
 /Data
 
 # Directory for jupyter file
-/jupyter_file
+/jupyter
 # Directory for Models
 /Models
 # Models 
