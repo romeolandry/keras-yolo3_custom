@@ -252,14 +252,7 @@ def run_convertor(args):
     if len(out_index)==0: out_index.append(len(all_layers)-1)
     model = Model(inputs=input_layer, outputs=[all_layers[i] for i in out_index])
     print(model.summary())
-
-    if not os.path.exists(os.path.dirname(output_path)):
-        try:
-            os.makedirs(os.path.dirname(output_path))
-        except OSError as exc:
-            if exc.errno != errno.EEXIST:
-                raise
-
+    
     if args.weights_only:
         model.save_weights('{}'.format(output_path))
         print('Saved Keras weights to {}'.format(output_path))
