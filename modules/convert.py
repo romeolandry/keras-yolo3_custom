@@ -82,6 +82,13 @@ def run_convertor(args):
     output_path = os.path.expanduser(args.output_path)
     assert output_path.endswith(
         '.h5'), 'output path {} is not a .h5 file'.format(output_path)
+    # create directory if not exits
+    if not os.path.exists(os.path.dirname(output_path)):
+        try:
+            os.makedirs(os.path.dirname(output_path))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise
 
     print(bc.INFO + 'Check weights file '+ bc.ENDC)
     # check if weight file exits if not auto matische donwload
