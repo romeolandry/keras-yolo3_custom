@@ -40,7 +40,7 @@ trained_model = os.path.join(os.getcwd(), 'Models/Models_OT/'+ Name_dataset + '/
         "classes_path": the same that were used to train
 """
 # if test model its not given
-model_path = output_path_converted_darknet_to_keras
+model_path = trained_model
 score = 0.3
 iou = 0.45
 model_imga_size  =  (416, 416)
