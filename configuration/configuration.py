@@ -38,12 +38,9 @@ trained_model = os.path.join(os.getcwd(), 'Models/Models_OT/'+ Name_dataset + '/
         "model_path": output of convert 
         "anchors_path": the same that were used to train
         "classes_path": the same that were used to train
-        "score" : 0.3,
-        "iou" : 0.45,
-        "model_image_size" : (416, 416),
-        "gpu_num" : 1,
 """
-
+# if test model its not given
+model_path = output_path_converted_darknet_to_keras
 score = 0.3
 iou = 0.45
 model_imga_size  =  (416, 416)

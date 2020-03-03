@@ -24,7 +24,7 @@ from configuration import configuration as test_conf
 
 class YOLO(object):
     _defaults = {
-        "model_path": test_conf.output_path_converted_darknet_to_keras,
+        "model_path": test_conf.model_path,
         "anchors_path": test_conf.anchors_path,
         "classes_path": test_conf.classes_file_path,
         "score" : test_conf.store_true,
@@ -65,7 +65,6 @@ class YOLO(object):
     def generate(self):
         model_path = os.path.expanduser(self.model_path)
         assert model_path.endswith('.h5'), 'Keras model or weights must be a .h5 file.'
-
         # Load model, or construct model and load weights.
         num_anchors = len(self.anchors)
         num_classes = len(self.class_names)

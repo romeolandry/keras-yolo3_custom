@@ -103,13 +103,22 @@ def parser_arguments():
                         help='ans Yes to test from given weigth: the model config will be convert to keras model')
 
     parser.add_argument(
-        '--anchors', type=str,
+        '--model_path', type=str,
+        required=False,
+        default=data_config.model_path,
+        help='Path to output Keras model file.'
+    )
+
+    parser.add_argument(
+        '--anchors_path', type=str,
+        default=data_config.anchors_path,
         help='path to anchor definitions, default '
     )
 
     parser.add_argument(
         '--classes_list', type=str,
-        help='path to class definitions, default '
+        default=data_config.classes_file_path,
+        help='path to class definitions, default'
     )
 
     parser.add_argument(
@@ -132,8 +141,8 @@ def parser_arguments():
     parser.add_argument(
         '--image_size',
         type=tuple,
-        default= data_config.score,
-        help='Number of GPU to use, default ')
+        default= data_config.model_imga_size,
+        help='Number of GPU to use, default')
 
     parser.add_argument(
         '--image', default=False, action="store_true",
