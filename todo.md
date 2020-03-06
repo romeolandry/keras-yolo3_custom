@@ -9,4 +9,7 @@
     
 - train
 
+    - save  Information s used for train like: classes file path; anchor paht; anotation_path.
+
 - test
+    - load save information for specified model
