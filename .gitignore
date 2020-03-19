@@ -50,11 +50,14 @@ dist
 *.avi
 # text
 *.txt
+#csv
+*.csv
 
 # log
 /log
 # weight
 /Weights
+
 
 # Except 
 !configuration/models/*
