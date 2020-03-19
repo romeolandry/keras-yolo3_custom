@@ -10,6 +10,7 @@ import os
 import numpy as np
 import keras.backend as K
 import tensorflow as tf
+import modules.save_param as save
 
 # ignore  warning of tensorflow about  not support FMA CPU
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -74,6 +75,7 @@ def train():
                 initial_epoch=0,
                 callbacks=[logging, checkpoint])
         model.save_weights(data_config.log_dir + 'trained_weights_stage_1.h5')
+        
 
     # Unfreeze and continue training, to fine-tune.
     # Train longer if the result is not good.
@@ -93,6 +95,9 @@ def train():
             initial_epoch=50,
             callbacks=[logging, checkpoint, reduce_lr, early_stopping])
         model.save_weights(data_config.log_dir + 'trained_weights_final.h5')
+
+        # save train paramter
+        save.to_csv(data_config.trained_model, annotation_path, data_config.classes_file_path, num_classes, data_config.anchors_path, data_config.log_dir)
         ## Save the entire model to be converted in onnx-file
         if not os.path.exists(os.path.dirname(data_config.trained_model)):
             try:
