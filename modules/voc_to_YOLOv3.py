@@ -52,7 +52,7 @@ for CLASS in classes:
     for filename in os.listdir(CLASS):
         if not filename.endswith('.xml'):
             continue
-        fullname = dataset_train+'/'+ os.path.basename(CLASS)+'/'+filename
+        fullname = dataset_train + os.path.basename(CLASS)+'/'+filename
         test(fullname)
 
 for CLASS in CLS:
