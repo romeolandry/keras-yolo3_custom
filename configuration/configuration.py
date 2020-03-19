@@ -8,7 +8,7 @@ Name_dataset = "Custom_data" # Name of your folder Dataset e.g Custom_data_[cals
 
 classe = ['Canoe'] # Witch Classes will be Downloaded to see availabel classe ['Apple','Orange']
 type_of_Data = 'train' # witch dataset did you wont to Downloaded e.g:['train', 'test', 'validation', 'all']
-Quantty = 50 # How many File did you wont
+quantity = 50 # How many File did you wont
 annotation_file =  'Annotation_'+ Name_dataset +'.txt'
 class_file_classes= 'Classes_4_'+annotation_file[:-4]+'.txt'
 
