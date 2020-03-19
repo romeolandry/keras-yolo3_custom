@@ -97,7 +97,7 @@ def train():
         model.save_weights(data_config.log_dir + 'trained_weights_final.h5')
 
         # save train paramter
-        save.to_csv(data_config.trained_model, annotation_path, data_config.classes_file_path, num_classes, data_config.anchors_path, data_config.log_dir)
+        save.to_csv(data_config.trained_model, annotation_path, data_config.classes_file_path, num_classes, data_config.quantity, data_config.anchors_path, data_config.log_dir)
         ## Save the entire model to be converted in onnx-file
         if not os.path.exists(os.path.dirname(data_config.trained_model)):
             try:
