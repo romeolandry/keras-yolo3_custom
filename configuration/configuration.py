@@ -9,8 +9,8 @@ Name_dataset = "Custom_data" # Name of your folder Dataset e.g Custom_data_[cals
 classe = ['Canoe'] # Witch Classes will be Downloaded to see availabel classe ['Apple','Orange']
 type_of_Data = 'train' # witch dataset did you wont to Downloaded e.g:['train', 'test', 'validation', 'all']
 Quantty = 50 # How many File did you wont
-annotation_file =  'Class_4_'+ Name_dataset +'.txt'
-class_file_classes= annotation_file[:-4]+'_classes.txt'
+annotation_file =  'Annotation_'+ Name_dataset +'.txt'
+class_file_classes= 'Classes_4_'+annotation_file[:-4]+'.txt'
 
 """
     Confguration to convert Darknet To Keras to keras model
@@ -25,10 +25,15 @@ store_true = True # Plot generated Keras model and save as image False if not .
 """
     Confguration to to Train Model
 """
-annotation_path = os.path.join(os.getcwd(), 'Data/' + Name_dataset + '/OID/Dataset/' + annotation_file)
-# Use coco classes if you test the downloaded modle insteat of you custon model
-classes_file_path = os.path.join(os.getcwd(), 'configuration/models/voc_classes.txt')
-# classes_file_path = os.path.join(os.getcwd(), 'Data/' + Name_dataset + '/OID/Dataset/' + class_file_classes)
+#____________________________ Custom model___________________________________
+
+annotation_path = os.path.join(os.getcwd(), 'Data/' + Name_dataset + '/OID/Dataset/' + annotation_file) # Custom model
+classes_file_path = os.path.join(os.getcwd(), 'Data/' + Name_dataset + '/OID/Dataset/' + class_file_classes)
+
+#____________________________ Coco or VOC___________________________________
+""" annotation_path = os.path.join(os.getcwd(), 'configuration/models/coco_classes.txt')
+classes_file_path = os.path.join(os.getcwd(), 'configuration/models/voc_classes.txt') """
+
 anchors_path = os.path.join(os.getcwd(), 'configuration/models/yolo_anchors.txt') 
 log_dir = os.path.join(os.getcwd(), 'log/' + Name_dataset + '/000/') 
 trained_model = os.path.join(os.getcwd(), 'Models/Models_OT/'+ Name_dataset + '/custom_model_OT.h5')
@@ -46,5 +51,9 @@ iou = 0.45
 model_imga_size  =  (416, 416)
 gpu_num = 1
 
+"""
+Csv datei pfad
+"""
+csv_path = os.path.join(os.getcwd(),'Train_Parameter.csv')
 
 
