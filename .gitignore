@@ -55,6 +55,8 @@ dist
 
 # log
 /log
+*.log
+*.out 
 # weight
 /Weights
 
