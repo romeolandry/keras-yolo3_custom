@@ -14,18 +14,14 @@ import yolo_video as test
 
 if __name__ == "__main__":
     args = pars.parser_arguments()
-    
+
+    if args.option == 'convert':
+        conv_to_keras.run_convertor(args)
     if args.option == 'train':
         print("train option was choosed")
-        if args.convert:
-            print(" convert bevore")
-            conv_to_keras.run_convertor(args)
         tr.train()
     if args.option == 'download':
         dd.downloader(args)
     if args.option == 'test':
-        if args.convert:
-            print(" convert bevore")
-            conv_to_keras.run_convertor(args)
         test.test_yolo3(args)
         print("test yolo model")
