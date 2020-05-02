@@ -24,11 +24,11 @@ if you already convert the model just run
 
 4- run test 
 
-    python run.py test --input [input video] --output [optional_output]
+    python run.py test --model_path [] --input [input video] --output [optional_output]
 
     if image 
 
-    python run.py test --image
+    python run.py test --image --model_path []
 
 
 
