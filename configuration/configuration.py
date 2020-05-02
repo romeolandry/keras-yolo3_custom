@@ -35,7 +35,7 @@ classes_file_path = os.path.join(os.getcwd(), 'Data/' + Name_dataset + '/OID/Dat
 classes_file_path = os.path.join(os.getcwd(), 'configuration/models/voc_classes.txt') """
 
 anchors_path = os.path.join(os.getcwd(), 'configuration/models/yolo_anchors.txt') 
-log_dir = os.path.join(os.getcwd(), 'log/' + Name_dataset + '/000/') 
+log_dir = os.path.join(os.getcwd(), 'log/' + Name_dataset + '/001/') 
 trained_model = os.path.join(os.getcwd(), 'Models/Models_OT/'+ Name_dataset + '/custom_model_OT.h5')
 
 """

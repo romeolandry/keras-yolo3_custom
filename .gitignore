@@ -55,10 +55,14 @@ dist
 
 # log
 /log
+*.log
+*.out 
 # weight
 /Weights
 
+# requirements for server
+requirements_server.txt
+# Except
+!/configuration/models/*
 
-# Except 
-!configuration/models/*
 

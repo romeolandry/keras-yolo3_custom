@@ -34,7 +34,7 @@ def train():
     num_classes = len(class_names)
     anchors = get_anchors(data_config.anchors_path)
     input_shape = (416,416) # multiple of 32, hw
-
+    
     is_tiny_version = len(anchors)==6 # default setting
     if is_tiny_version:
         model = create_tiny_model(input_shape, anchors, num_classes,
@@ -57,7 +57,7 @@ def train():
     np.random.seed(None)
     num_val = int(len(lines)*val_split)
     num_train = len(lines) - num_val
-
+    
     # Train with frozen layers first, to get a stable loss.
     # Adjust num epochs to your dataset. This step is enough to obtain a not bad model.
     if True:
@@ -71,7 +71,7 @@ def train():
                 steps_per_epoch=max(1, num_train//batch_size),
                 validation_data=data_generator_wrapper(lines[num_train:], batch_size, input_shape, anchors, num_classes),
                 validation_steps=max(1, num_val//batch_size),
-                epochs=50,
+                epochs=1000,
                 initial_epoch=0,
                 callbacks=[logging, checkpoint])
         model.save_weights(data_config.log_dir + 'trained_weights_stage_1.h5')
@@ -97,7 +97,7 @@ def train():
         model.save_weights(data_config.log_dir + 'trained_weights_final.h5')
 
         # save train paramter
-        save.to_csv(data_config.trained_model, annotation_path, data_config.classes_file_path, num_classes, data_config.quantity, data_config.anchors_path, data_config.log_dir)
+        save.to_csv(data_config.trained_model, annotation_path, data_config.classes_file_path, num_classes, "train:"+ str(num_train)+"/val:"+str(num_val), data_config.anchors_path, data_config.log_dir)
         ## Save the entire model to be converted in onnx-file
         if not os.path.exists(os.path.dirname(data_config.trained_model)):
             try:
